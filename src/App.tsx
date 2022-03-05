@@ -1,25 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { CustomerList } from './components/CustomerList';
+import { Box, grommet, Grommet, Header } from 'grommet';
+import { BrowserRouter as Router, Routes, Route, useParams, Link } from "react-router-dom";
+import { CustomerDetail } from './components/CustomerDetail';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grommet full theme={grommet} themeMode="dark">
+      <Box pad="large" background="accent-4">
+        <Header>
+          Jakub Kucecka - customer app
+        </Header>
+      </Box>
+      <br />
+      <Router>
+        <Routes>
+          <Route path="/" element={<CustomerList />} />
+          <Route path="/:id" element={<ShowDetail />} />
+        </Routes>
+      </Router>
+    </Grommet >
+  );
+}
+
+function ShowDetail() {
+  let { id } = useParams();
+  return (
+    <CustomerDetail customerId={Number(id)} />
   );
 }
 
