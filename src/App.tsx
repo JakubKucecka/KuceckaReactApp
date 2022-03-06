@@ -10,7 +10,7 @@ function App() {
     <Grommet full theme={grommet} themeMode="dark">
       <Box pad="large" background="accent-4">
         <Header>
-          Jakub Kucecka - customer app
+          Jakub Kucecka - customer APP
         </Header>
       </Box>
       <br />
