@@ -1,33 +1,12 @@
 import React, { Component } from 'react';
 import { CheckBox, Text, DataTable, Heading, Box } from "grommet";
 import { Link } from 'react-router-dom';
-
-const customers: Customer[] = [
-    {
-        'id': 1,
-        'name': "Jakub",
-        'date': "2022-03-03",
-        'vip': true,
-        'numberOfOrders': 5
-    },
-    {
-        'id': 2,
-        'name': "Ivan",
-        'date': "2021-03-03",
-        'vip': false,
-        'numberOfOrders': 0
-    },
-    {
-        'id': 3,
-        'name': "Peter",
-        'date': "2020-03-03",
-        'vip': true,
-        'numberOfOrders': 52
-    },
-];
+import { getAllCustomers} from './dataBank'
 
 export class CustomerList extends Component {
     render() {
+        const customers = getAllCustomers();
+
         return (
             <Box>
             <Heading alignSelf='center'>

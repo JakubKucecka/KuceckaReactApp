@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { CustomerList } from './components/CustomerList';
 import { Box, grommet, Grommet, Header } from 'grommet';
-import { BrowserRouter as Router, Routes, Route, useParams, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
 import { CustomerDetail } from './components/CustomerDetail';
 
 function App() {

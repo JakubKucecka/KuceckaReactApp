@@ -1,66 +1,13 @@
 import React from 'react';
 import { Box, Text, Heading, Paragraph, DataTable } from "grommet";
+import { getCustomerWithOrders } from './dataBank';
 
 interface Props {
     customerId: number | undefined;
 }
 
-const customers: Customer[] = [
-    {
-        'id': 1,
-        'name': "Jakub",
-        'date': "2022-03-03",
-        'vip': true,
-        'numberOfOrders': 5
-    },
-    {
-        'id': 2,
-        'name': "Ivan",
-        'date': "2021-03-03",
-        'vip': false,
-        'numberOfOrders': 0
-    },
-    {
-        'id': 3,
-        'name': "Peter",
-        'date': "2020-03-03",
-        'vip': true,
-        'numberOfOrders': 52
-    },
-];
-
-const orders: Order[] = [
-    {
-        'id': 1,
-        'date': "2022-03-03",
-        'amount': 50,
-        'numberOfItems': 5
-    },
-    {
-        'id': 2,
-        'date': "2021-03-03",
-        'amount': 30,
-        'numberOfItems': 0
-    },
-    {
-        'id': 3,
-        'date': "2020-03-03",
-        'amount': 100,
-        'numberOfItems': 52
-    },
-];
-
-function GetFullCustomer(customerId: number | undefined) {
-    let fullCustomers: FullCustomer = {
-        'customer': customers.find(c => c.id === customerId),
-        'orders': orders
-    }
-
-    return fullCustomers;
-}
-
 export const CustomerDetail: React.FC<Props> = ({ customerId }) => {
-    let customer = GetFullCustomer(customerId);
+    let customer = getCustomerWithOrders(customerId);
 
     return (
         <Box alignContent='center'>
