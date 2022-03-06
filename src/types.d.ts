@@ -1,20 +1,15 @@
 interface Customer {
     id: number;
     name: string;
-    date: string;
+    birth_day: string;
     vip: boolean;
-    numberOfOrders: number;
+    numberOfOrders: number | undefined;
 }
 
 interface Order {
     id: number;
-    date: string;
+    oredered_at: string;
     amount: number;
-    numberOfItems: number;
+    numberOfItems: number | undefined;
     customer_id: number;
-}
-
-interface FullCustomer {
-    customer: Customer|undefined;
-    orders: Order[];
 }
