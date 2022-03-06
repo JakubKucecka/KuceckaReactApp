@@ -11,6 +11,7 @@ interface Order {
     date: string;
     amount: number;
     numberOfItems: number;
+    customer_id: number;
 }
 
 interface FullCustomer {
