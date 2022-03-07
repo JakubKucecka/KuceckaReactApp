@@ -58,6 +58,9 @@ export class CustomerList extends Component {
                             align: 'center',
                             property: 'numberOfOrders',
                             header: <Text>Number of orders</Text>,
+                            render: customer => (
+                                <Text>{customer['Orders_aggregate']['aggregate']['count']}</Text>
+                            ),
                         },
                         {
                             align: 'center',

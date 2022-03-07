@@ -8,22 +8,32 @@ export class CustomerDetail extends Component<{ customerId?: number }> {
         customer: {
             name: "",
             id: "",
+            birth_day: "",
             vip: "",
-            birth_day: ""
-        },
-        orders: []
+            Orders: [
+                {
+                    id: "",
+                    oredered_at: "",
+                    amount: "",
+                    OrderItems_aggregate: {
+                        aggregate: {
+                            count: 0
+                        }
+                    }
+                }
+            ]
+        }
     };
 
-    render() {
-
+    componentDidMount(){
         axios.get('https://prompt-bonefish-15.hasura.app/api/rest/getCustomerWithOrders/' + this.props.customerId, requestOptions)
         .then(res => {
-            console.log(res.data);
-            const customer = res.data.Customer_by_pk;
+            const customer = res.data.Customer[0];
             this.setState({ customer });
-            const orders = res.data.Order_aggregate.nodes;
-            this.setState({ orders });
         })
+    }
+
+    render() {
 
         return (
             <Box alignContent='center'>
@@ -76,9 +86,12 @@ export class CustomerDetail extends Component<{ customerId?: number }> {
                             align: 'center',
                             property: 'numberOfItems',
                             header: <Text>Number of items</Text>,
+                            render: order => (
+                                <Text>{order['OrderItems_aggregate']['aggregate']['count']}</Text>
+                            ),
                         },
                     ]}
-                    data={this.state.orders}
+                    data={this.state.customer['Orders']}
                 />
             </Box>
         )
